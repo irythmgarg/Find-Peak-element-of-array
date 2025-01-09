@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int findPeakElement(vector<int>& nums) {
+        // Handle edge cases for arrays with size 1 or peaks at boundaries
+        if (nums.size() == 1) return 0;
+        if (nums[0] > nums[1]) return 0;
+        if (nums[nums.size() - 1] > nums[nums.size() - 2]) return nums.size() - 1;
+
+        // Binary search for a peak element
+        int s = 1; // Start from the second element
+        int e = nums.size() - 2; // End at the second-last element
+
+        while (s <= e) {
+            int mid = s + (e - s) / 2;
+
+            // Check if nums[mid] is a peak element
+            if (nums[mid] > nums[mid - 1] && nums[mid] > nums[mid + 1]) {
+                return mid;
+            }
+
+            // If the right neighbor is greater, move right
+            if (nums[mid] < nums[mid + 1]) {
+                s = mid + 1;
+            } else {
+                // Otherwise, move left
+                e = mid - 1;
+            }
+        }
+
+        return -1; // This line is never reached in valid input
+    }
+};
