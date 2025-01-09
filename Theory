@@ -1,0 +1,16 @@
+If nums[mid] > nums[mid-1] and nums[mid] > nums[mid+1], then nums[mid] is a peak.
+If nums[mid] < nums[mid+1], a peak exists in the right half because nums[mid+1] is higher.
+Otherwise, a peak exists in the left half because nums[mid-1] is higher.
+
+
+Time Complexity
+𝑂(log⁡𝑛)
+O(logn), as the search space is halved in each iteration.
+Space Complexity
+𝑂(1)
+O(1), as no extra space is used.
+
+
+
+
+
